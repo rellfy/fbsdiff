@@ -15,7 +15,7 @@ namespace fbspatch {
 		private string bspatchPath;
 		private IndexFile file;
 
-		public FolderPatch(string bspatchName, string inputDirectory, string patchFile) {
+		public FolderPatch(string bspatchName, string inputDirectory, string patchFile, string[] args) {
 			this.currentPath = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
 			this.patchFile = Path.Combine(this.currentPath, patchFile);
 			this.bspatchPath = Path.Combine(this.currentPath, bspatchName);
@@ -26,11 +26,22 @@ namespace fbspatch {
 			if (!Directory.Exists(inputDirectory))
 				throw new Exception("Input folder does not exist");
 
-			Patch(inputDirectory);
-			Console.ReadKey();
+			bool deletePatchFile = FindInStringArray(args, "--delete-patch");
+
+			Patch(inputDirectory, deletePatchFile);
 		}
 
-		private void Patch(string inputDirectory) {
+
+		private bool FindInStringArray(string[] array, string text) {
+			for (int i = 0; i < array.Length; i++) {
+				if (array[i] == text)
+					return true;
+			}
+
+			return false;
+		}
+
+		private void Patch(string inputDirectory, bool deletePatchFile) {
 			string inputPath = Path.Combine(this.currentPath, inputDirectory);
 			
 			if (Directory.Exists(Path.Combine(this.currentPath, "patch")))
@@ -68,7 +79,9 @@ namespace fbspatch {
 				}
 			}
 
-			//File.Delete(this.patchFile);
+			if (deletePatchFile && File.Exists(this.patchFile))
+				File.Delete(this.patchFile);
+
 			Directory.Delete(patchPath, true);
 		}
 
@@ -85,21 +98,12 @@ namespace fbspatch {
 			return filesRelative;
 		}
 
-		private bool FindInArray(string[] array, string text) {
-			for (int i = 0; i < array.Length; i++) {
-				if (array[i] == text)
-					return true;
-			}
-
-			return false;
-		}
-
 		private IndexFile.IndexLine[] GetIndexLines(string[] folder1Files, string[] folder2Files) {
 			List<IndexFile.IndexLine> lines = new List<IndexFile.IndexLine>();
 
 			// Find created/patched files
 			for (int i = 0; i < folder2Files.Length; i++) {
-				bool found = FindInArray(folder1Files, folder2Files[i]);
+				bool found = FindInStringArray(folder1Files, folder2Files[i]);
 
 				if (!found) {
 					lines.Add(new IndexFile.IndexLine(IndexFile.IndexCommand.Create, folder2Files[i]));
@@ -110,7 +114,7 @@ namespace fbspatch {
 
 			// Find deleted files
 			for (int i = 0; i < folder1Files.Length; i++) {
-				bool found = FindInArray(folder2Files, folder1Files[i]);
+				bool found = FindInStringArray(folder2Files, folder1Files[i]);
 
 				if (!found)
 					lines.Add(new IndexFile.IndexLine(IndexFile.IndexCommand.Delete, folder1Files[i]));

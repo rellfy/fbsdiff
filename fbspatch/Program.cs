@@ -12,7 +12,7 @@ namespace fbsdiff {
 				return;
 			}
 
-			FolderPatch patch = new FolderPatch("bspatch.exe", args[0], args[1]);
+			FolderPatch patch = new FolderPatch("bspatch.exe", args[0], args[1], args);
 		}
 	}
 }
