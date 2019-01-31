@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fbsdiff", "fbsdiff\fbsdiff.csproj", "{6F49F9B5-8C88-478D-B996-AD96B1B075BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fbspatch", "fbspatch\fbspatch.csproj", "{ADDA7BE4-DCD3-4A50-8895-D3305DCC545D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F49F9B5-8C88-478D-B996-AD96B1B075BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F49F9B5-8C88-478D-B996-AD96B1B075BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F49F9B5-8C88-478D-B996-AD96B1B075BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F49F9B5-8C88-478D-B996-AD96B1B075BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADDA7BE4-DCD3-4A50-8895-D3305DCC545D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADDA7BE4-DCD3-4A50-8895-D3305DCC545D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADDA7BE4-DCD3-4A50-8895-D3305DCC545D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADDA7BE4-DCD3-4A50-8895-D3305DCC545D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B1D7566E-D639-4586-AAC0-4045D02B1884}
+	EndGlobalSection
+EndGlobal
