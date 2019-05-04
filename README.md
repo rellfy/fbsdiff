@@ -13,8 +13,8 @@ The generated file will be a .zip that follows the following structure:
 
 ```
 => create/
-  ======> file_to_be_created.txt
-  ======> another_new_file.png
+  => file_to_be_created.txt
+  => another_new_file.png
 => patch.index
 => file_to_be_patched.mp4.patch
 => another_existing_file.txt.patch
