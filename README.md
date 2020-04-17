@@ -1,5 +1,5 @@
 # fbsdiff
-Dynamically generate and apply patch files to folders using `bsdiff` and `bspatch` (http://www.daemonology.net/bsdiff/). Useful when compressing the patch target for patching and then decompressing the result is not a realistic option.
+Dynamically generate and apply patch files to folders using `bsdiff` and `bspatch` (http://www.daemonology.net/bsdiff/). Useful when compressing the patch target and then decompressing the result is not a realistic option.
 
 ## Generating patches with fbsdiff.exe
 
